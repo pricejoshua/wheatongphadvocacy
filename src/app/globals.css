@@ -3,19 +3,128 @@
 @tailwind utilities;
 
 :root {
+  /* Brand Colors */
+  --brand-blue: #0047BB;
+  --brand-yellow: #FFB800;
+  --brand-red: #FF4B4B;
   --background: #ffffff;
   --foreground: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: var(--brand-blue);
+    --foreground: #ffffff;
   }
+}
+
+@font-face {
+  font-family: 'Syne';
+  src: url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&display=swap');
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Syne', Arial, Helvetica, sans-serif;
+}
+
+/* Brand Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--brand-blue);
+}
+
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+  color: var(--brand-yellow);
+}
+
+/* Brand Components */
+.brand-card {
+  background: var(--brand-blue);
+  color: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.brand-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,50 Q25,25 50,50 T100,50' stroke='rgba(255,255,255,0.1)' fill='none' stroke-width='2'/%3E%3C/svg%3E");
+  opacity: 0.2;
+}
+
+.brand-button {
+  background: var(--brand-yellow);
+  color: var(--brand-blue);
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.brand-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Utility Classes */
+.text-brand-blue {
+  color: var(--brand-blue);
+}
+
+.text-brand-yellow {
+  color: var(--brand-yellow);
+}
+
+.bg-brand-blue {
+  background-color: var(--brand-blue);
+}
+
+.bg-brand-yellow {
+  background-color: var(--brand-yellow);
+}
+
+/* Illustration Style */
+.brand-illustration {
+  stroke: var(--brand-blue);
+  stroke-width: 2;
+  fill: none;
+}
+
+.dark .brand-illustration {
+  stroke: white;
+}
+
+/* Layout Components */
+.content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* Animation Utilities */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
 }
